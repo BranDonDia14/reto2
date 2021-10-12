@@ -5,7 +5,7 @@ function traerInformacionmensaje(){
         datatype:"JSON",
         success:function(respuesta){
             console.log(respuesta);
-            pintarRespuesta(respuesta.items);
+            pintarRespuesta3(respuesta.items);
         }
     });
 }

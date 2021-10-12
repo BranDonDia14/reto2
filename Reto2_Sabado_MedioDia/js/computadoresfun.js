@@ -5,7 +5,7 @@ function traerInformacioncomputer(){
         datatype:"JSON",
         success:function(respuesta){
             console.log(respuesta);
-            pintarRespuesta(respuesta.items);
+            pintarRespuesta2(respuesta.items);
         }
     });
 }
@@ -20,7 +20,8 @@ function pintarRespuesta2(items){
         myTable+="<td>"+items[i].model+"</td>";
         myTable+="<td>"+items[i].category_id+"</td>";
         myTable+="<td>"+items[i].name+"</td>";
-        myTable+="<td> <button onclick='borrarElemento("+items[i].id+")'>Borrar</button>";
+        myTable+="<td> <button onclick='borrarElemento2("+items[i].id+")'>Borrar</button>";
+        myTable+="<td> <button onclick='editarInformacion2("+items[i].id+")'>Actualizar</button>";
         myTable+="</tr>";
     }
     myTable+="</table>";
@@ -29,7 +30,7 @@ function pintarRespuesta2(items){
 
 function guardarInformacion2(){
     let myData={
-        id:$("#idcomputadores").val(),
+        id:$("#id").val(),
         brand:$("#brand").val(),
         model:$("#model").val(),
         category_id:$("#category_id").val(),
@@ -48,16 +49,17 @@ function guardarInformacion2(){
             $("#model").val("");
             $("#category_id").val("");
             $("#name").val("");
-            traerInformacion();
+            traerInformacioncomputer();
             alert("se ha guardado el dato")
         }
     });
 
 }
 
-function editarInformacion2(){
+function editarInformacion2(idElemento){
+    
     let myData={
-        id:$("#id").val(),
+        id:idElemento,
         brand:$("#brand").val(),
         model:$("#model").val(),
         category_id:$("#category_id").val(),
@@ -79,7 +81,7 @@ function editarInformacion2(){
             $("#model").val("");
             $("#category_id").val("");
             $("#name").val("");
-            traerInformacion();
+            traerInformacioncomputer();
             alert("se ha Actualizado")
         }
     });
@@ -98,7 +100,7 @@ function borrarElemento2(idElemento){
         datatype:"JSON",
         success:function(respuesta){
             $("#resultado").empty();
-            traerInformacion();
+            traerInformacioncomputer();
             alert("Se ha Eliminado.")
         }
     });
