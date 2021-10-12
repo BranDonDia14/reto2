@@ -21,7 +21,7 @@ function pintarRespuesta2(items){
         myTable+="<td>"+items[i].category_id+"</td>";
         myTable+="<td>"+items[i].name+"</td>";
         myTable+="<td> <button onclick='borrarElemento2("+items[i].id+")'>Borrar</button>";
-        myTable+="<td> <button onclick='editarInformacion2("+items[i].id+")'>Actualizar</button>";
+        myTable+="<td> <button onclick='obtenerComputador("+items[i].id+")'>cargar datos</button>";
         myTable+="</tr>";
     }
     myTable+="</table>";
@@ -56,10 +56,9 @@ function guardarInformacion2(){
 
 }
 
-function editarInformacion2(idElemento){
-    
+function editarInformacion2(){
     let myData={
-        id:idElemento,
+        id:$("#id").val(),
         brand:$("#brand").val(),
         model:$("#model").val(),
         category_id:$("#category_id").val(),
@@ -102,6 +101,28 @@ function borrarElemento2(idElemento){
             $("#resultado").empty();
             traerInformacioncomputer();
             alert("Se ha Eliminado.")
+        }
+    });
+}
+
+function obtenerComputador(idElemento){
+    $.ajax({
+        url:"https://g211999c587c7a4-bdreto1.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/computer/computer",
+        type:"GET",
+        datatype:"JSON",
+        success:function(respuesta){
+            console.log(respuesta);
+            for(i=0;i<items.length;i++){
+                var item = respuesta.items[i];
+            }
+            $("#id").val(idElemento);
+            $("#brand").val("");
+            $("#model").val("");
+            $("#category_id").val("");
+            $("#name").val("");
+        },
+        error: function(jqXHR,textStatus,errorThrown){
+
         }
     });
 }
