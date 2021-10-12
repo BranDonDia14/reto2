@@ -89,3 +89,46 @@ function borrarElemento3(idElemento){
         }
     });
 }
+
+function editarInformacion3(){
+    let myData={
+        id:$("#id").val(),
+        name:$("#messagetext").val(),
+
+    };
+    console.log(myData);
+    let dataToSend=JSON.stringify(myData);
+    $.ajax({
+        url:"https://g211999c587c7a4-mascotas.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/message/message",
+        type:"PUT",
+        data:dataToSend,
+        contentType:"application/JSON",
+        datatype:"JSON",
+        success:function(respuesta){
+            $("#resultado").empty();
+            $("#id").val("");
+            $("#messagetext").val("");
+            traerInformacion();
+            alert("se ha Actualizado")
+        }
+    });
+}
+
+function borrarElemento3(idElemento){
+    let myData={
+        id:idElemento
+    };
+    let dataToSend=JSON.stringify(myData);
+    $.ajax({
+        url:"https://g211999c587c7a4-mascotas.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/message/message",
+        type:"DELETE",
+        data:dataToSend,
+        contentType:"application/JSON",
+        datatype:"JSON",
+        success:function(respuesta){
+            $("#resultado").empty();
+            traerInformacion();
+            alert("Se ha Eliminado.")
+        }
+    });
+}
