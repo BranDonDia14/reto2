@@ -112,9 +112,6 @@ function obtenerComputador(idElemento){
         datatype:"JSON",
         success:function(respuesta){
             console.log(respuesta);
-            for(i=0;i<items.length;i++){
-                var item = respuesta.items[i];
-            }
             $("#id").val(idElemento);
             $("#brand").val("");
             $("#model").val("");
