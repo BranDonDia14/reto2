@@ -1,0 +1,42 @@
+body{
+    background-color: cadetblue;
+    border: 1px solid black;
+    text-align: center;
+  
+    
+}
+
+h1{
+    border: 2px solid black;
+    font-size: 30px;
+    font-weight: bold;
+    font-family:sans-serif
+    
+
+}
+
+h2{
+    border: 2px solid black;
+
+    font-size: 20px;
+    font-family:sans-serif
+
+}
+
+ul{
+    border: 1px solid black;
+    list-style:inside;
+
+}
+
+button{
+    border: 3px solid black;
+
+}
+
+input{
+    border: 2px solid black;
+
+}
+
+
